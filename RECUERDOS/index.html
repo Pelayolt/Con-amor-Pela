@@ -23,30 +23,28 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      overflow: hidden; /* bloquea scroll global */
     }
 
     body {
-      height: 100dvh;
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
       display: flex;
-      align-items: center;
       justify-content: center;
-      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
       font-family: 'Poppins', sans-serif;
-      color: #ddd;
     }
     #card {
       position: relative;
-      max-width: 300px;
+      width: 90vw;          /* ocupa 90% del ancho */
+      max-width: 400px;     /* ancho máximo */
+      height: 90vh;          /* ocupa 90% del alto */
       margin: auto;
-      color: #fff5f7;
-      background-color: #5b2b36;
       padding: 20px;
+      background-color: #5b2b36;
+      color: #fff5f7;
       border-radius: 15px;
-      font-family: 'Poppins', sans-serif;
       text-align: center;
-      overflow: hidden;
+      overflow-y: auto;      /* scroll solo dentro del card si es necesario */
     }
 
     /* screen decorativo */
