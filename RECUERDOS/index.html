@@ -27,22 +27,20 @@
     }
 
     body {
-      height: 100dvh;
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
+      min-height: 100dvh;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
+      padding: 0 12px;
       font-family: 'Poppins', sans-serif;
       color: #ddd;
+      box-sizing: border-box;
+      overflow: hidden;
     }
+
     #card {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      height: 90%;
+      width: 100%;
       max-width: 400px;
       color: #fff5f7;
       background-color: #5b2b36;
@@ -50,8 +48,8 @@
       border-radius: 15px;
       font-family: 'Poppins', sans-serif;
       text-align: center;
+      box-sizing: border-box;
     }
-
     /* screen decorativo */
     #screen {
       position: absolute;
