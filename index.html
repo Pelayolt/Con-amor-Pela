@@ -6,13 +6,20 @@
   <title>Mis Apps</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root{
+        --bg1:#ffdde1;
+        --bg2:#ee9ca7;
+        --panel:#fff5f7;
+        --accent:#ff5e7e;
+        --muted:#8e7d82;
+    }
     body {
       margin: 0;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle at top left, #1a1f3c, #0b1220);
+      background:linear-gradient(180deg,var(--bg1),var(--bg2));
       font-family: 'Poppins', sans-serif;
       color: #fff;
       padding: 20px;
@@ -28,8 +35,8 @@
       margin-bottom: 30px;
       font-size: clamp(1.5rem, 5vw, 2.5rem); /* tamaño fluido */
       font-weight: 600;
-      color: #ffcc00;
-      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
     }
 
     .apps {
@@ -46,6 +53,8 @@
       transition: transform 0.3s, background 0.3s;
       cursor: pointer;
       box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+      background:linear-gradient(135deg,#ffd6e0,#ffeef2);
+
     }
 
     .card:hover {
@@ -62,12 +71,12 @@
     .card h2 {
       font-size: 1.1rem;
       margin: 0;
-      color: #ffcc00;
+      color: #5b2b36;
     }
 
     .card p {
       font-size: 0.9rem;
-      color: #bbb;
+      color: #8e7d82;
       margin-top: 6px;
     }
 
