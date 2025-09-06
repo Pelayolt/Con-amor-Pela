@@ -5,114 +5,155 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nostalgia</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<audio id="musica" autoplay loop muted playsinline>
+    <source src="EL_PRINCIPIO_DE_ALGO.mp3" type="audio/mpeg">
+</audio>
+
 <style>
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #ffe6f0, #ffccd9);
-    color: #333;
-    min-height: 100vh;
-  }
+:root{
+    --bg1:#ffdde1;
+    --bg2:#ee9ca7;
+    --panel:#fff5f7;
+    --accent:#ff5e7e;
+    --muted:#8e7d82;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color: #333;
+  min-height: 100vh;
+}
 
-  h1 {
-    text-align: center;
-    margin: 20px 0;
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    color: #e74c3c;
-    text-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
-  }
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
 
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
-  }
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color:var(--accent);
+  text-shadow: 0 0 15px var(--accent);
+}
 
-  .card {
-    background: rgba(255,255,255,0.85);
-    border-radius: 15px;
-    overflow: hidden;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-  }
+ /* Botón música */
+#musicBtn{
+    background:var(--accent);
+    border:none;
+    color:#fff;
+    font-size:20px;
+    border-radius:50%;
+    width:42px;
+    height:42px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 12px rgba(255,94,126,0.4);
+    transition:all .25s;
+}
+#musicBtn:hover{transform:scale(1.1);background:#ff7792}
 
-  .card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    transition: transform 0.3s;
-  }
 
-  .card:hover img {
-    transform: scale(1.05);
-  }
+/* Galería */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
 
-  .card p {
-    margin: 10px;
-    font-size: 0.95rem;
-    color: #e74c3c;
-    font-style: italic;
-  }
+.card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
 
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 10;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    animation: fadeIn 0.3s ease-in-out;
-  }
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
 
-  .modal img {
-    max-width: 80%;
-    max-height: 70%;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(231,76,60,0.7);
-    margin-bottom: 15px;
-  }
+.card:hover img {
+  transform: scale(1.05);
+}
 
-  .modal p {
-    font-size: 1.2rem;
-    color: #ffccd9;
-    text-align: center;
-    max-width: 80%;
-  }
+.card p {
+  margin: 10px;
+  font-size: 15px;
+  color: #5b2b36;
+  font-style: italic;
+}
 
-  .modal span {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 2.5rem;
-    color: #e74c3c;
-    cursor: pointer;
-  }
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+}
 
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
+.modal img {
+  max-width: 80%;
+  max-height: 70%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--accent);
+  margin-bottom: 15px;
+}
 
-  @media(max-width: 600px){
-    .card img { height: 140px; }
-    .modal img { max-width: 90%; max-height: 60%; }
-    .modal p { font-size: 1rem; }
-  }
+.modal p {
+  font-size: 1.2rem;
+  color: #ffccd9;
+  text-align: center;
+  max-width: 80%;
+}
+
+.modal span {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@media(max-width: 600px){
+  .card img { height: 140px; }
+  .modal img { max-width: 90%; max-height: 60%; }
+  .modal p { font-size: 1rem; }
+}
 </style>
 </head>
 <body>
 
-<h1>NOSTALGIA</h1>
+<header>
+  <h1>Nostalgia</h1>
+  <button id="musicBtn">🔇</button>
+</header>
 
 <div class="gallery">
   <div class="card" data-msg="Recuerdo cuando te hiciste esta foto mientras conducia despues del burguer, me diste muchisima ternura">
@@ -207,6 +248,29 @@
 
   closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
   modal.addEventListener('click', e => { if(e.target === modal) modal.style.display = 'none'; });
+
+  const musica = document.getElementById("musica");
+    const musicBtn = document.getElementById("musicBtn");
+
+    // Estado inicial
+    let isPlaying = false;
+
+    musicBtn.addEventListener("click", () => {
+    if (!isPlaying) {
+        musica.muted = false;
+        musica.volume = 0.3;
+        musica.play().then(()=>{
+        isPlaying = true;
+        musicBtn.textContent = "🎵";
+        musicBtn.classList.remove("paused");
+        });
+    } else {
+        musica.pause();
+        isPlaying = false;
+        musicBtn.textContent = "🔇";
+        musicBtn.classList.add("paused");
+    }
+    });
 </script>
 
 </body>

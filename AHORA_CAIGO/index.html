@@ -7,6 +7,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
+  <audio id="musica" autoplay loop muted playsinline>
+      <source src="STAYIN_ALIVE.mp3" type="audio/mpeg">
+  </audio>
+
   <style>
     :root{
       --bg1:#ffdde1;
@@ -26,7 +30,14 @@
 
     .wrap{max-width:900px;margin:0 auto;padding:20px}
 
-    header{text-align:center;margin-bottom:20px}
+    header{
+      text-align:center;
+      margin-bottom:20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+    }
     header h1{
       font-size:22px;
       font-weight:700;
@@ -37,6 +48,24 @@
       border-radius:20px;
       box-shadow:0 4px 12px rgba(255,94,126,0.4);
     }
+
+    /* Botón música */
+    #musicBtn{
+      background:var(--accent);
+      border:none;
+      color:#fff;
+      font-size:20px;
+      border-radius:50%;
+      width:42px;
+      height:42px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(255,94,126,0.4);
+      transition:all .25s;
+    }
+    #musicBtn:hover{transform:scale(1.1);background:#ff7792}
 
     .panel{
       background:var(--panel);
@@ -117,7 +146,6 @@
         font-weight:700;
         color:#5b2b36;
         background-color:#ff7792;
-
     }
 
     .trapdoor{
@@ -196,7 +224,8 @@
 <body>
 <div class="wrap">
     <header>
-        <h1>Ahora Caigo  - Edición Pela</h1>
+        <h1>Ahora Caigo - Edición Pela</h1>
+        <button id="musicBtn">🔇</button>
     </header>
 
     <div class="stage">
@@ -465,6 +494,21 @@
 
     // Inicializar
     init();
+
+    const musica = document.getElementById("musica");
+    const musicBtn = document.getElementById("musicBtn");
+
+    musicBtn.addEventListener("click", () => {
+    if(musica.muted){
+        musica.muted = false;
+        musica.volume = 0.4; // volumen moderado
+        musicBtn.textContent = "🎵";
+        musica.play().catch(e=>console.log("Bloqueado:", e));
+    } else {
+        musica.muted = true;
+        musicBtn.textContent = "🔇";
+    }
+    });
 </script>
 </body>
 </html>
