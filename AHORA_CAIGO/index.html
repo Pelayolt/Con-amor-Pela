@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <!-- Imprescindible en iOS: evita zoom raro al pulsar -->
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Ahora Caigo</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -55,7 +57,7 @@
     .panel-tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
     .tile{height:36px;background:rgba(255,255,255,0.03);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#dbe9ff}
 
-    .trapdoor{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;width:80%;height:38px;background:#071127;border-radius:6px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center}
+    .trapdoor{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;width:80%;height:20px;background:rgba(255,255,255,0.06);border-radius:6px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:center}
     .trapdoor.open{transform:translateX(-50%) translateY(8px) rotateX(65deg);opacity:0}
 
     .player {position:absolute;left:50%;transform:translateX(-50%);bottom:56px;width:150px;height:auto;display:flex;align-items:flex-end;justify-content:center;background:transparent;}
@@ -291,10 +293,39 @@
         setTimeout(()=> elPlayer.style.display='none', 1200);
     }
 
-    // Mensajes
     function showMessage(msg) {
-        setTimeout(()=>alert(msg), 80);
+        const message = document.createElement('div');
+        message.textContent = msg;
+
+        // Estilos
+        message.style.position = 'fixed';
+        message.style.bottom = '20px';
+        message.style.left = '50%';
+        message.style.transform = 'translateX(-50%)';
+        message.style.background = 'rgba(231, 76, 60, 0.9)'; // fondo rojo suave
+        message.style.color = '#fff';
+        message.style.padding = '10px 20px';
+        message.style.borderRadius = '8px';
+        message.style.boxShadow = '0 4px 15px rgba(0,0,0,0.4)';
+        message.style.fontFamily = 'Poppins, sans-serif';
+        message.style.fontWeight = '600';
+        message.style.opacity = '0';
+        message.style.transition = 'opacity 0.3s';
+
+        document.body.appendChild(message);
+
+        // Mostrar con animación
+        requestAnimationFrame(() => {
+            message.style.opacity = '1';
+        });
+
+        // Desaparecer después de 3 segundos
+        setTimeout(() => {
+            message.style.opacity = '0';
+            message.addEventListener('transitionend', () => message.remove());
+        }, 3000);
     }
+
 
     // Controles
     elNext.addEventListener('click', ()=>{ if(!locked) nextQuestion(); });
