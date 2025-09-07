@@ -39,6 +39,7 @@ body {
 
 /* 2) Márgenes laterales del card */
 #card {
+  position: relative;
   width: 100%;
   max-width: 400px;
   margin: 0 12px;             /* <- antes estaba en body */
@@ -55,23 +56,19 @@ body {
 
 /* 3) Centrado real en viewport y por detrás del card */
 #screen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
   z-index: 0;
   pointer-events: none;
 
-  font-family: monospace;   /* monospace garantizado */
+  font-family: monospace;
   white-space: pre;
-  text-align: center;       /* centra líneas dentro del bloque */
+  text-align: center;
   line-height: 0.65;
   font-size: 10px;
-  letter-spacing: 0;
   color: var(--accent);
 
-  max-width: 100vw;
-  max-height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
   overflow: hidden;
 }
 
@@ -126,7 +123,7 @@ header h2 {
     <button id="musicBtn">🔇</button>
   </header>
   
-  <p>Redscuerdo el día en que nos conocimos en persona, en la biblioteca; yo me hice el guay con mi juguetito friki.</p>  
+  <p>Recuerdo el día en que nos conocimos en persona, en la biblioteca; yo me hice el guay con mi juguetito friki.</p>  
   <p>Recuerdo nuestro primer beso; los nervios se sentían en el ambiente.</p>
   <p>Recuerdo los días de descanso en el coche; no se porque, hacia mucho calor.</p>
   <p>Recuerdo la primera vez que dormimos juntos; a pesar de que la cama era pequeñita, dormí tan agusto como si te conociera de toda la vida.</p>
