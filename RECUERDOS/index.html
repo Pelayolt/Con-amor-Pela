@@ -62,18 +62,19 @@ body {
   z-index: 0;
   pointer-events: none;
 
-  /* 4) Fuente monoespaciada para que el arte “pre” no se desplace visualmente */
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-variant-ligatures: none;
-
+  font-family: monospace;   /* monospace garantizado */
   white-space: pre;
+  text-align: center;       /* centra líneas dentro del bloque */
   line-height: 0.65;
   font-size: 10px;
   letter-spacing: 0;
   color: var(--accent);
-  max-width: 100dvw;
-  max-height: 100dvh;
+
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
 }
+
 
 /* el contenido del card siempre por encima */
 #card * {
@@ -81,33 +82,33 @@ body {
   z-index: 1;
 }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
 
-    header h2 {
-      margin: 0;
-      color: var(--accent);
-    }
+header h2 {
+  margin: 0;
+  color: var(--accent);
+}
 
-    #musicBtn{
-      background:var(--accent);
-      border:none;
-      color:#fff;
-      font-size:20px;
-      border-radius:50%;
-      width:42px;
-      height:42px;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 4px 12px rgba(255,94,126,0.4);
-      transition:all .25s;
+#musicBtn{
+  background:var(--accent);
+  border:none;
+  color:#fff;
+  font-size:20px;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 12px rgba(255,94,126,0.4);
+  transition:all .25s;
   }
   #musicBtn:hover{transform:scale(1.1);background:#ff7792}
 
@@ -125,7 +126,7 @@ body {
     <button id="musicBtn">🔇</button>
   </header>
   
-  <p>Recuerdo el día en que nos conocimos en persona, en la biblioteca; yo me hice el guay con mi juguetito friki.</p>  
+  <p>Redscuerdo el día en que nos conocimos en persona, en la biblioteca; yo me hice el guay con mi juguetito friki.</p>  
   <p>Recuerdo nuestro primer beso; los nervios se sentían en el ambiente.</p>
   <p>Recuerdo los días de descanso en el coche; no se porque, hacia mucho calor.</p>
   <p>Recuerdo la primera vez que dormimos juntos; a pesar de que la cama era pequeñita, dormí tan agusto como si te conociera de toda la vida.</p>
