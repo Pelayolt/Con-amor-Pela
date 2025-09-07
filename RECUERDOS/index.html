@@ -23,7 +23,8 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      overflow-x: hidden; /* evita scroll lateral */
+      overflow-y: auto;    /* scroll solo si hace falta */
     }
 
     body {
@@ -56,6 +57,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      max-width: 100%;
+      max-height: 100%;
       z-index: 0;
       color: var(--accent);
       white-space: pre;
@@ -64,6 +67,8 @@
       letter-spacing: 0;
       text-align: center;
       pointer-events: none;
+      overflow: hidden;
+      text-overflow: clip;
     }
 
     #card *:not(#screen) {
